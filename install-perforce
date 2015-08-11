@@ -8,16 +8,17 @@ sudo mv p4d /usr/local/bin
 sudo adduser perforce
 sudo mkdir /mnt/perforce_depot
 sudo chown perforce /mnt/perforce_depot
-sudo mkdir /mnt/var/log/perforce
+sudo mkdir -p /mnt/var/log/perforce
 sudo chown perforce /mnt/var/log/perforce
 wget https://raw.githubusercontent.com/fire/linux-perforce-installer/master/config.txt
-sudo mkdir $P4SSLDIR
+sudo mkdir -p $P4SSLDIR
 vim config.txt
 cp config.txt $P4SSLDIR
-sudo chown perforce $P4SSLDIR
-sudo chown perforce $P4SSLDIR/*
+sudo chown perforce:root $P4SSLDIR
+sudo chown perforce:root $P4SSLDIR/*
 sudo chmod 700 $P4SSLDIR
 sudo chmod 700 $P4SSLDIR/*
+sudo chmod -x $P4SSLDIR/*
 sudo -H -u perforce bash -c 'export P4SSLDIR=/mnt/perforce_depot/ssl; p4d -r /mnt/perforce_depot -Gc'
 sudo apt-get install daemon
 cd /etc/init.d
