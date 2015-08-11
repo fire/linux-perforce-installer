@@ -1,16 +1,16 @@
 #!/bin/sh
-P4SSLDIR=/perforce_depot/ssl
+P4SSLDIR=/mnt/perforce_depot/ssl
 export P4SSLDIR=$P4SSLDIR
 
 wget ftp://ftp.perforce.com/perforce/r15.1/bin.linux26x86_64/p4d
 chmod +x p4d
 sudo mv p4d /usr/local/bin
 sudo adduser perforce
-sudo mkdir /perforce_depot
-sudo chown perforce /perforce_depot
-sudo mkdir /var/log/perforce
-sudo chown perforce /var/log/perforce
-wget https://raw.githubusercontent.com/Allar/linux-perforce-installer/master/config.txt
+sudo mkdir /mnt/perforce_depot
+sudo chown perforce /mnt/perforce_depot
+sudo mkdir /mnt/var/log/perforce
+sudo chown perforce /mnt/var/log/perforce
+wget https://raw.githubusercontent.com/fire/linux-perforce-installer/master/config.txt
 sudo mkdir $P4SSLDIR
 vim config.txt
 cp config.txt $P4SSLDIR
@@ -18,10 +18,10 @@ sudo chown perforce $P4SSLDIR
 sudo chown perforce $P4SSLDIR/*
 sudo chmod 700 $P4SSLDIR
 sudo chmod 700 $P4SSLDIR/*
-sudo -H -u perforce bash -c 'export P4SSLDIR=/perforce_depot/ssl; p4d -r /perforce_depot -Gc'
+sudo -H -u perforce bash -c 'export P4SSLDIR=/mnt/perforce_depot/ssl; p4d -r /mnt/perforce_depot -Gc'
 sudo apt-get install daemon
 cd /etc/init.d
-wget https://raw.githubusercontent.com/Allar/linux-perforce-installer/master/p4dservice
+wget https://raw.githubusercontent.com/fire/linux-perforce-installer/master/p4dservice
 chmod +x /etc/init.d/p4dservice
 sudo update-rc.d p4dservice defaults
 sudo reboot

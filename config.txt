@@ -1,21 +1,21 @@
 # C: Country Name - 2 letter code (default: US)
-C = US
+C = CA
 
 # ST: State or Province Name - full name (default: CA)
-ST = CA
+ST = British Columbia
 
 # L: Locality or City Name (default: Alameda)
-L = San Francisco
+L = Pitt Meadows
 
 # O: Organization or Company Name (default: Perforce Autogen Cert)
-O = Perforce Autogen Cert
+O = Chibifire.com
 
 # OU = Organization Unit - division or unit
 OU =
 
 # CN: Common Name (usually the DNS name of the server)
 # (default: the current server's DNS name)
-CN = *.example.com
+CN = perforce.chibfire.com
 
 # EX: number of days from today for certificate expiration
 # (default: 730, e.g. 2 years)
